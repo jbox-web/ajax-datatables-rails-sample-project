@@ -1,0 +1,7 @@
+{
+  "name": "ajax-datatables-rails",
+  "description": "A Rails application to show features of ajax-datatables-rails/datatables-factory",
+  "repository": "https://github.com/jbox-web/ajax-datatables-rails-sample-project",
+  "keywords": ["rails", "ajax-datatables-rails", "jquery-datatables", "datatables"],
+  "stack": "heroku-20"
+}

@@ -1,0 +1,19 @@
+---
+fr:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+
+    attributes:
+      post:
+        name: Nom
+        title: Titre
+        content: Contenu
+        rooms: Chambres
+        enabled: Actif
+        created_at: Créé lé
+        updated_at: Modifié le
+        enabled_s: Actif (sélection unique)
+        enabled_m: Actif (sélection multiple)

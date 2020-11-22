@@ -1,0 +1,160 @@
+.selected-count {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+.datatable-form-wrapper {
+  border-color: #e7eaec;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;
+  padding-bottom: 0;
+  margin-bottom: 15px;
+}
+
+.dt-button-collection {
+  left: auto !important;
+}
+
+.dt-button-collection.dropdown-menu {
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: #d2d2d2;
+  }
+}
+
+.yadcf-filter-wrapper {
+  display: block;
+  margin-left: 0px;
+
+  .input-group {
+    flex-wrap: unset;
+
+    .form-control {
+      height: 34px;
+    }
+  }
+
+  .form-control::-moz-placeholder {
+    color: #aaa;
+    opacity: 1;
+  }
+
+  .form-control:-ms-input-placeholder {
+    color: #aaa;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: #aaa;
+  }
+
+  input.yadcf-filter[placeholder] {
+    padding-left: 10px;
+    text-overflow: ellipsis;
+  }
+
+  input.yadcf-filter-range-date:placeholder-shown {
+    color: #555555;
+  }
+
+  input.yadcf-filter-range-number:placeholder-shown {
+    color: #555555;
+  }
+
+  .input-group .form-control:last-child,
+  .input-group-addon:last-child,
+  .input-group-btn:last-child > .btn,
+  .input-group-btn:last-child > .btn-group > .btn,
+  .input-group-btn:last-child > .dropdown-toggle,
+  .input-group-btn:first-child > .btn:not(:first-child),
+  .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+    border-radius: 0;
+  }
+
+  .input-group-btn:last-child > .btn,
+  .input-group-btn:last-child > .btn-group {
+    height: 34px;
+    margin-left: 0;
+    border-left: 0;
+  }
+
+  .yadcf-filter-wrapper-inner {
+    border: 1px solid #e5e6e7;
+    height: 34px;
+  }
+
+  .yadcf-filter-range-date-seperator:after {
+    content: '-';
+  }
+
+  .yadcf-filter-range-number-seperator:after {
+    content: '-';
+  }
+
+  .yadcf-filter-range-number {
+    width: 100px;
+    height: 32px;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+    color: #555555;
+  }
+
+  .yadcf-filter-range-date {
+    width: 100px;
+    height: 32px;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+    color: #555555;
+  }
+
+  .yadcf-filter-range-start {
+    border-right: 1px solid #e5e6e7;
+    border-left: none;
+  }
+
+  .yadcf-filter-range-end {
+    border-left: 1px solid #e5e6e7;
+    border-right: none;
+  }
+
+  .select2-container--default {
+    .selection {
+      white-space: break-spaces;
+    }
+
+    .select2-search--inline {
+      .select2-search__field {
+        margin-top: 3px;
+      }
+    }
+
+    .select2-selection--single {
+      .select2-selection__rendered {
+        color: #aaa;
+        padding: inherit;
+      }
+    }
+
+    .select2-selection--multiple {
+      min-height: 34px;
+    }
+  }
+}
+
+@media screen and (min-width:1034px){
+  .dataTables_info.selected-count-wrapper {
+    float: right;
+    padding-top: 2px !important;
+  }
+  .dataTables_info.selected-count-wrapper.nofloat {
+    float: none;
+  }
+  .nofloat .select-info {
+    float: left;
+    margin-left: -7px !important;
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+}

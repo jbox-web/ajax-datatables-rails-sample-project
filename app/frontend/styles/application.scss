@@ -1,0 +1,29 @@
+// Bootstrap
+@import "~bootstrap/scss/bootstrap.scss";
+
+// FontAwesome
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+// Load JQueryUI
+@import "~jquery-ui/themes/base/core";
+@import "~jquery-ui/themes/base/theme";
+@import "~jquery-ui/themes/base/datepicker";
+
+// Load Datatables
+@import "~datatables.net-bs4/css/dataTables.bootstrap4";
+@import "~datatables.net-buttons-bs4/css/buttons.bootstrap4";
+@import "~datatables.net-responsive-bs4/css/responsive.bootstrap4";
+@import "~datatables.net-select-bs4/css/select.bootstrap4";
+
+// Load Select2
+@import "~select2/dist/css/select2";
+
+// Load Datatables Factory
+@import "../vendor/stylesheets/datatables_factory/datatables.font-awesome";
+@import "../vendor/stylesheets/datatables_factory/datatables.filters";
+@import "../vendor/stylesheets/datatables_factory/datatables.bootstrap";
+@import "../vendor/stylesheets/datatables_factory/datatables.select2";
+@import "../vendor/stylesheets/datatables_factory/datatables.context_menu";

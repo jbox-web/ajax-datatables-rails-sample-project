@@ -1,0 +1,19 @@
+---
+fr:
+
+  date:
+    formats:
+      default: "%d/%m/%Y %Hh%M"
+      long: "%d/%m/%Y %Hh%M"
+      short: "%d/%m/%Y"
+      month_names: "%B"
+      datetimepicker: "%d/%m/%Y %H:%M"
+
+  time:
+    formats:
+      default: "%d/%m/%Y %Hh%M"
+      long: "%d/%m/%Y %Hh%M"
+      short: "%Hh%M"
+      month_names: "%B"
+      datetimepicker: "%d/%m/%Y %H:%M"
+      date: "%d/%m/%Y"

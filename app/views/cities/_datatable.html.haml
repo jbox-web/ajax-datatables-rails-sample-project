@@ -1,0 +1,25 @@
+- bootstrap_datatables_for :cities,
+    source:     datatable_cities_path(format: :json),
+    dom:        datatable_dom_with_selected_and_buttons,
+    select:     { style: 'multi' },
+    order:      [[ 1, 'asc' ]] do |t|
+
+  - t.button datatable_button_for('select_all').reverse_merge(url: select_all_cities_path)
+  - t.button datatable_button_for('reset_selection').reverse_merge(url: reset_selection_cities_path)
+  - t.button datatable_button_for('reset_filters')
+  - t.button datatable_button_for('apply_default_filters')
+  - t.button datatable_button_for('columns')
+
+  - t.head_for_check_box
+  - t.head_for :name,           label: City.human_attribute_name('name')
+  - t.head_for :iata,           label: City.human_attribute_name('iata')
+  - t.head_for :country_name,   label: City.human_attribute_name('country_name')
+  - t.head_for :custom_column, label: City.human_attribute_name('custom_column')
+
+  - t.body
+
+  = t.search_form html: { class: 'responsive-select2' } do |f|
+    .row
+      .col-lg-4.col-xl-3= f.select :country_name
+
+    = f.render_datatable

@@ -1,0 +1,63 @@
+---
+fr:
+  datatables:
+    # Global DataTables translations config
+    processing:     Traitement en cours...
+    search:         "Rechercher&nbsp;:"
+    lengthMenu:     Afficher _MENU_ éléments
+    info:           Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments
+    infoEmpty:      Affichage de l'élément 0 à 0 sur 0 éléments
+    infoFiltered:   (filtré de _MAX_ éléments au total)
+    infoPostFix:    ''
+    loadingRecords: Chargement en cours...
+    zeroRecords:    Aucun élément à afficher
+    emptyTable:     Aucune donnée disponible dans le tableau
+
+    paginate:
+      first:    Premier
+      previous: Précédent
+      next:     Suivant
+      last:     Dernier
+
+    aria:
+      sortAscending:  ': activer pour trier la colonne par ordre croissant'
+      sortDescending: ': activer pour trier la colonne par ordre décroissant'
+
+    select:
+      rows: "%d lignes sélectionnée(s)"
+      cells: "%d cellules sélectionnée(s)"
+      columns: "%d colonnes sélectionnée(s)"
+
+
+    # datatables-factory related translations
+    buttons:
+      columns: Visibilité des colonnes
+      select_all: Tout sélectionner
+      reset_selection: Réinitialiser la sélection
+      reset_filters: Réinitialiser tous les filtres
+      apply_default_filters: Appliquer les filtres par défaut
+      pageLength:
+        _: Afficher %d éléments
+        '-1': Montre tout
+
+    filter:
+      date_create: date de création
+      date_update: date de modification
+      date_delete: date de suppression
+      date_start: date de début
+      date_end: date de fin
+      enabled_s: Statut
+      enabled_m: Statut
+      rooms: Nb. emplacements
+      name: Nom
+      min: Min.
+      max: Max.
+
+  text:
+    filter_by: Filtrer par
+    'yes': oui
+    'no': non
+
+  button:
+    check_all: Tout cocher
+    uncheck_all: Tout décocher

@@ -1,0 +1,50 @@
+# frozen_string_literal: true
+
+class PostsDatatable < ApplicationDatatable
+
+  RANGE_DELIMITER = '-yadcf_delim-'
+
+  def view_columns
+    @view_columns ||= {
+      check_box:  { source: 'Post.id', orderable: false, searchable: false },
+      name:       { source: 'Post.name' },
+      title:      { source: 'Post.title' },
+      rooms:      { source: 'Post.rooms', cond: range_search },
+      enabled_s:  { source: 'Post.enabled' },
+      enabled_m:  { source: 'Post.enabled',    use_regex: false, cond: :in, formatter: ->(str) { cast_regex_value(str) } },
+      created_at: { source: 'Post.created_at', cond: :date_range, delimiter: RANGE_DELIMITER },
+      updated_at: { source: 'Post.updated_at', cond: :date_range, delimiter: RANGE_DELIMITER },
+    }
+  end
+
+
+  def data
+    records.map do |decorated|
+      {
+        check_box:  decorated.to_checkbox(selected: selected.include?(decorated.id)),
+        name:       decorated.name,
+        title:      decorated.title,
+        rooms:      decorated.rooms,
+        enabled_s:  decorated.enabled,
+        enabled_m:  decorated.enabled,
+        created_at: decorated.created_at,
+        updated_at: decorated.updated_at,
+        DT_RowId:   decorated.id,
+      }
+    end
+  end
+
+
+  def get_raw_records
+    Post.all
+  end
+
+
+  def additional_data
+    super.merge({
+      dt_dropdown_data(:enabled_s) => select_options_for_boolean,
+      dt_dropdown_data(:enabled_m) => select_options_for_boolean,
+    })
+  end
+
+end

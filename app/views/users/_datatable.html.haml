@@ -1,0 +1,43 @@
+- bootstrap_datatables_for :users,
+    source:     datatable_users_path(format: :json),
+    dom:        datatable_dom_with_selected_and_buttons,
+    select:     { style: 'multi' },
+    order:      [[ 2, 'asc' ]] do |t|
+
+  - t.button datatable_button_for('select_all').reverse_merge(url: select_all_users_path)
+  - t.button datatable_button_for('reset_selection').reverse_merge(url: reset_selection_users_path)
+  - t.button datatable_button_for('reset_filters')
+  - t.button datatable_button_for('apply_default_filters')
+  - t.button datatable_button_for('columns')
+
+  - t.head_for_check_box
+  - t.head_for :name,       label: Post.human_attribute_name('name')
+  - t.head_for :title,      label: Post.human_attribute_name('title')
+  - t.head_for :rooms,      label: Post.human_attribute_name('rooms')
+  - t.head_for :enabled_s,  label: Post.human_attribute_name('enabled_s')
+  - t.head_for :enabled_m,  label: Post.human_attribute_name('enabled_m')
+  - t.head_for :created_at, label: Post.human_attribute_name('created_at')
+  - t.head_for :updated_at, label: Post.human_attribute_name('updated_at')
+
+  - t.body class: 'context-menu'
+
+  = t.search_form html: { class: 'responsive-select2' } do |f|
+    .row
+      .col-lg-4.col-xl-3= f.select       :enabled_s, populate_with: '1'
+      .col-lg-4.col-xl-3= f.multi_select :enabled_m, populate_with: ['0', '1']
+      .col-lg-4.col-xl-3= f.text_field   :name,      populate_with: 'name 1'
+
+    .row
+      .col-lg-6.col-xl-3
+        %label.font-weight-bold= label_filter_by('date_create')
+        = f.range_date :created_at, datatable_options_for_range_date.merge(filter_delay: 2000)
+
+      .col-lg-6.col-xl-3
+        %label.font-weight-bold= label_filter_by('date_update')
+        = f.range_date :updated_at, datatable_options_for_range_date.merge(filter_delay: 2000)
+
+      .col-lg-6.col-xl-3
+        %label.font-weight-bold= label_filter_by('rooms')
+        = f.range :rooms, { filter_delay: 1000, filter_default_label: [label_filter_by('min', prefix: false), label_filter_by('max', prefix: false)] }
+
+    = f.render_datatable

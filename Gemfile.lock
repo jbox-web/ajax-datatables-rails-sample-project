@@ -1,14 +1,13 @@
 GIT
   remote: https://github.com/jbox-web/ajax-datatables-rails.git
-  revision: 414d1699d3b90e8b9b30499882e280e884a03976
+  revision: 56554e6490961900b0583ef88c9e7cc5e9567848
   specs:
     ajax-datatables-rails (1.2.0)
-      railties (>= 5.1)
       zeitwerk
 
 GIT
   remote: https://github.com/jbox-web/datatables-factory.git
-  revision: 87ffdca9a34695c3478f0391b048221a371fdfcc
+  revision: ac83ea99459c29bb551419dc176c148eab4595b9
   specs:
     datatables-factory (1.0.0)
       rails (>= 5.2)
@@ -97,7 +96,7 @@ GEM
     haml (5.2.1)
       temple (>= 0.8.0)
       tilt
-    i18n (1.8.5)
+    i18n (1.8.6)
       concurrent-ruby (~> 1.0)
     loofah (2.8.0)
       crass (~> 1.0.2)

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jbox-web/ajax-datatables-rails.git
-  revision: 56554e6490961900b0583ef88c9e7cc5e9567848
+  revision: ace8e8a8c9fba8f471374246e319fa388ace7619
   specs:
     ajax-datatables-rails (1.2.0)
       zeitwerk

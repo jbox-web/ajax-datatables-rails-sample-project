@@ -1,0 +1,21 @@
+- bootstrap_datatables_for :transactions,
+    source:     datatable_transactions_path(format: :json),
+    dom:        datatable_dom_with_selected_and_buttons,
+    select:     { style: 'multi' },
+    order:      [[ 1, 'asc' ]] do |t|
+
+  - t.button datatable_button_for('select_all').reverse_merge(url: select_all_transactions_path)
+  - t.button datatable_button_for('reset_selection').reverse_merge(url: reset_selection_transactions_path)
+  - t.button datatable_button_for('reset_filters')
+  - t.button datatable_button_for('apply_default_filters')
+  - t.button datatable_button_for('columns')
+
+  - t.head_for :id,     label: Transaction.human_attribute_name('id')
+  - t.head_for :seller, label: Transaction.human_attribute_name('seller')
+  - t.head_for :buyer,  label: Transaction.human_attribute_name('buyer')
+  - t.head_for :amount, label: Transaction.human_attribute_name('amount')
+
+  - t.body class: 'context-menu'
+
+  = t.search_form html: { class: 'responsive-select2' } do |f|
+    = f.render_datatable

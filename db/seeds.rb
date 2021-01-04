@@ -63,3 +63,12 @@ if City.all.count == 0
 else
   puts "Skip cities creation"
 end
+
+if Transaction.all.count == 0
+  puts "Creating 100 transactions"
+  100.times do |i|
+    Transaction.create!(amount: (10..100).to_a.sample, buyer_id: User.pluck(:id).sample, seller_id: User.pluck(:id).sample)
+  end
+else
+  puts "Skip transactions creation"
+end

@@ -6,19 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Creating 100 posts"
-100.times do |i|
-  Post.create!(name: "Name #{i}", title: "Title #{i}", content: "Content #{i}", rooms: (1..200).to_a.sample, enabled: [true, false].sample)
+if Post.all.count == 0
+  puts "Creating 100 posts"
+  100.times do |i|
+    Post.create!(name: "Name #{i}", title: "Title #{i}", content: "Content #{i}", rooms: (1..200).to_a.sample, enabled: [true, false].sample)
+  end
+else
+  puts "Skip posts creation"
 end
 
-puts "Creating 100 users"
-100.times do |i|
-  User.create!(name: "Name #{i}", title: "Title #{i}", content: "Content #{i}", rooms: (1..200).to_a.sample, enabled: [true, false].sample)
+if User.all.count == 0
+  puts "Creating 100 users"
+  100.times do |i|
+    User.create!(name: "Name #{i}", title: "Title #{i}", content: "Content #{i}", rooms: (1..200).to_a.sample, enabled: [true, false].sample)
+  end
+else
+  puts "Skip users creation"
 end
 
-
-cities = []
-countries = []
+all_cities = []
+all_countries = []
 
 File.readlines("#{ Rails.root }/db/IATA_airports.csv").each do |line|
   iata, type, name_ru, name, coordinates, timezone, parent_name = line.split(';').map(&:strip)
@@ -26,21 +33,33 @@ File.readlines("#{ Rails.root }/db/IATA_airports.csv").each do |line|
 
   case type
   when "city"
-    cities << { iata: iata, name: name, parent_name: parent_name, timezone: timezone }
+    all_cities << { iata: iata, name: name, parent_name: parent_name, timezone: timezone }
   when "country"
-    countries << { iata: iata, name: name }
+    all_countries << { iata: iata, name: name }
   end
 end
 
-Country.create countries
+all_cities = all_cities.group_by { |c| c[:parent_name] }
 
-cities = cities.group_by { |c| c[:parent_name] }
 
-cities.each do |name, ccities|
-  country = Country.find_by_name name
-  ccities.each do |city_attr|
-    city_attr[:country_id] = country.id
-    city_attr.delete :parent_name
-    City.create city_attr
+if Country.all.count == 0
+  puts "Creating countries"
+  Country.create all_countries
+else
+  puts "Skip countries creation"
+end
+
+if City.all.count == 0
+  puts "Creating cities"
+
+  all_cities.each do |country_name, cities|
+    country = Country.find_by_name country_name
+    cities.each do |city_attr|
+      city_attr[:country_id] = country.id
+      city_attr.delete :parent_name
+      City.create city_attr
+    end
   end
+else
+  puts "Skip cities creation"
 end

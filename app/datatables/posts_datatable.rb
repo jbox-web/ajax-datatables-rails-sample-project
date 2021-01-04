@@ -9,9 +9,9 @@ class PostsDatatable < ApplicationDatatable
       check_box:  { source: 'Post.id', orderable: false, searchable: false },
       name:       { source: 'Post.name' },
       title:      { source: 'Post.title' },
-      rooms:      { source: 'Post.rooms', cond: range_search },
-      enabled_s:  { source: 'Post.enabled' },
-      enabled_m:  { source: 'Post.enabled',    use_regex: false, cond: :in, formatter: ->(str) { cast_regex_value(str) } },
+      rooms:      { source: 'Post.rooms',      cond: range_search },
+      enabled_s:  { source: 'Post.enabled',    cond: :eq },
+      enabled_m:  { source: 'Post.enabled',    cond: :in, use_regex: false, formatter: ->(str) { cast_regex_value(str) } },
       created_at: { source: 'Post.created_at', cond: :date_range, delimiter: RANGE_DELIMITER },
       updated_at: { source: 'Post.updated_at', cond: :date_range, delimiter: RANGE_DELIMITER },
     }

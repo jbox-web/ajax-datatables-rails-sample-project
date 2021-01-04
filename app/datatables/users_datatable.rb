@@ -9,9 +9,9 @@ class UsersDatatable < ApplicationDatatable
       check_box:  { source: 'User.id', orderable: false, searchable: false },
       name:       { source: 'User.name' },
       title:      { source: 'User.title' },
-      rooms:      { source: 'User.rooms', cond: range_search },
-      enabled_s:  { source: 'User.enabled' },
-      enabled_m:  { source: 'User.enabled',    use_regex: false, cond: :in, formatter: ->(str) { cast_regex_value(str) } },
+      rooms:      { source: 'User.rooms',      cond: range_search },
+      enabled_s:  { source: 'User.enabled',    cond: :eq },
+      enabled_m:  { source: 'User.enabled',    cond: :in, use_regex: false, formatter: ->(str) { cast_regex_value(str) } },
       created_at: { source: 'User.created_at', cond: :date_range, delimiter: RANGE_DELIMITER },
       updated_at: { source: 'User.updated_at', cond: :date_range, delimiter: RANGE_DELIMITER },
     }

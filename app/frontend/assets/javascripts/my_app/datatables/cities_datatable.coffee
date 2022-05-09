@@ -1,4 +1,4 @@
-import { DatatableBase } from '@jbox-web/datatables-factory/src/index.coffee'
+import { DatatableBase } from '@jbox-web/datatables-factory'
 
 class CitiesDatatable extends DatatableBase
 

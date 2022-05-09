@@ -33,7 +33,7 @@ module Common
     #   # => <li><i class="fa fa-check fa-li"></i> Bulleted list item</li>
     def fa_icon(names = 'flag', original_options = {})
       options = original_options.deep_dup
-      classes = [(options.delete(:icon_style) { 'fas' } || 'fas')]
+      classes = [options.delete(:icon_style) { 'fa-solid' } || 'fa-solid']
       classes.concat Private.icon_names(names)
       classes.concat Array(options.delete(:class))
       text = options.delete(:text)

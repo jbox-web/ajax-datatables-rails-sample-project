@@ -12,11 +12,11 @@ require 'popper.js'
 require 'bootstrap'
 
 # Load Rails UJS
-import {} from 'jquery-ujs'
+import Rails from '@rails/ujs'
+Rails.start()
 
-# Load Turbolinks
-import Turbolinks from 'turbolinks'
-Turbolinks.start()
+# Load Turbo(links)
+import "@hotwired/turbo-rails"
 
 # Load Select2
 require 'select2/dist/js/select2.full.js'
@@ -42,13 +42,13 @@ $.extend $.fn.dataTable.defaults,
   order:      []
 
 # Load DatatablesFactory
-import { DatatableBase } from '@jbox-web/datatables-factory/src/index.coffee'
+import { DatatableBase } from '@jbox-web/datatables-factory'
 
 # Close context_menu when click outside
 $(document).on('click', DatatableBase.clean_context_menu)
 
 # Load datatables
-$(document).on('turbolinks:load', DatatableBase.load_datatables)
+$(document).on('turbo:load', DatatableBase.load_datatables)
 
 # Load application JS
 import { MyApp, Datatables } from 'my_app/index.coffee'

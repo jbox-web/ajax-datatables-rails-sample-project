@@ -1,4 +1,6 @@
-module.exports = function(api) {
+const { moduleExists } = require('shakapacker')
+
+module.exports = function config(api) {
   var validEnv = ['development', 'test', 'production']
   var currentEnv = api.env()
   var isDevelopmentEnv = api.env('development')
@@ -28,45 +30,21 @@ module.exports = function(api) {
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
         {
-          forceAllTransforms: true,
           useBuiltIns: 'entry',
-          corejs: 3,
-          modules: false,
+          corejs: '3.8',
+          modules: 'auto',
+          bugfixes: true,
+          loose: true,
           exclude: ['transform-typeof-symbol']
         }
       ]
     ].filter(Boolean),
     plugins: [
       'babel-plugin-macros',
-      '@babel/plugin-syntax-dynamic-import',
-      isTestEnv && 'babel-plugin-dynamic-import-node',
-      '@babel/plugin-transform-destructuring',
+      ['@babel/plugin-proposal-class-properties', { loose: true }],
+      ['@babel/plugin-transform-runtime', { helpers: false }],
       [
-        '@babel/plugin-proposal-class-properties',
-        {
-          loose: true
-        }
-      ],
-      [
-        '@babel/plugin-proposal-object-rest-spread',
-        {
-          useBuiltIns: true
-        }
-      ],
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          helpers: false
-        }
-      ],
-      [
-        '@babel/plugin-transform-regenerator',
-        {
-          async: false
-        }
-      ],
-      [
-        require('babel-plugin-module-resolver').default,
+        'babel-plugin-module-resolver',
         {
           root: [
             './app/frontend/assets/javascripts',

@@ -38,7 +38,7 @@ module Common
       classes.concat Array(options.delete(:class))
       text = options.delete(:text)
       right_icon = options.delete(:right)
-      icon = tag.i(nil, options.merge(class: classes))
+      icon = tag.i(nil, **options.merge(class: classes))
       Private.icon_join(icon, text, reverse_order: right_icon)
     end
 

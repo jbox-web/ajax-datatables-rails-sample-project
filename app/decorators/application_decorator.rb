@@ -6,17 +6,17 @@ class ApplicationDecorator < Draper::Decorator
 
 
   def created_at(opts = {})
-    h.l(object.created_at, opts)
+    h.l(object.created_at, **opts)
   end
 
 
   def updated_at(opts = {})
-    h.l(object.updated_at, opts)
+    h.l(object.updated_at, **opts)
   end
 
 
   def to_checkbox(opts = {})
-    _record_check_box(object, opts)
+    _record_check_box(object, **opts)
   end
 
 

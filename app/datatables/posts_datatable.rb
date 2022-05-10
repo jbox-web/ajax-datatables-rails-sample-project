@@ -10,6 +10,8 @@ class PostsDatatable < ApplicationDatatable
       name:       { source: 'Post.name' },
       title:      { source: 'Post.title' },
       rooms:      { source: 'Post.rooms',      cond: range_search },
+      rooms_cond: { source: 'Post.rooms',      searchable: false },
+      rooms2:     { source: 'Post.rooms',      cond: dynamic_numeric_condition(source: :rooms_cond) },
       enabled_s:  { source: 'Post.enabled',    cond: :eq },
       enabled_m:  { source: 'Post.enabled',    cond: :in, use_regex: false, formatter: ->(str) { cast_regex_value(str) } },
       created_at: { source: 'Post.created_at', cond: :date_range, delimiter: RANGE_DELIMITER },
@@ -25,6 +27,8 @@ class PostsDatatable < ApplicationDatatable
         name:       decorated.name,
         title:      decorated.title,
         rooms:      decorated.rooms,
+        rooms_cond: decorated.rooms,
+        rooms2:     decorated.rooms,
         enabled_s:  decorated.enabled,
         enabled_m:  decorated.enabled,
         created_at: decorated.created_at,
@@ -42,8 +46,9 @@ class PostsDatatable < ApplicationDatatable
 
   def additional_data
     super.merge({
-      dt_dropdown_data(:enabled_s) => select_options_for_boolean,
-      dt_dropdown_data(:enabled_m) => select_options_for_boolean,
+      dt_dropdown_data(:rooms_cond) => select_options_for_numeric_filter,
+      dt_dropdown_data(:enabled_s)  => select_options_for_boolean,
+      dt_dropdown_data(:enabled_m)  => select_options_for_boolean,
     })
   end
 

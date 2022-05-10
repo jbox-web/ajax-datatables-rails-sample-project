@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/jbox-web/datatables-factory.git
-  revision: 2b3abf1b5b9284457863a66225b93a1d53eb57a4
+  revision: 8e499f04ed10a6a54af311a9db53ceb7ca27e4af
   specs:
     datatables-factory (1.0.0)
       rails (>= 5.2)

@@ -14,6 +14,8 @@
   - t.head_for :name,       label: Post.human_attribute_name('name')
   - t.head_for :title,      label: Post.human_attribute_name('title')
   - t.head_for :rooms,      label: Post.human_attribute_name('rooms')
+  - t.head_for :rooms_cond, label: Post.human_attribute_name('rooms')
+  - t.head_for :rooms2,     label: Post.human_attribute_name('rooms')
   - t.head_for :enabled_s,  label: Post.human_attribute_name('enabled_s')
   - t.head_for :enabled_m,  label: Post.human_attribute_name('enabled_m')
   - t.head_for :created_at, label: Post.human_attribute_name('created_at')
@@ -26,6 +28,14 @@
       .col-lg-4.col-xl-3= f.select       :enabled_s, populate_with: '1'
       .col-lg-4.col-xl-3= f.multi_select :enabled_m, populate_with: ['0', '1']
       .col-lg-4.col-xl-3= f.text_field   :name,      populate_with: 'name 1'
+
+    .row
+      .col-lg-4.col-xl-3
+        .row
+          .col-md-4.pr-0
+            = f.select     :rooms_cond, filter_reset_button: false
+          .col-md-8.pl-0
+            = f.text_field :rooms2, filter_delay: 500
 
     .row
       .col-lg-6.col-xl-3

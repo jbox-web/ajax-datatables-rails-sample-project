@@ -33,6 +33,17 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
     end
 
 
+    def select_options_for_numeric_filter
+      [
+        { value: 'eq',     label: '=' },
+        { value: 'not_eq', label: '!=' },
+        { value: 'lt',     label: '<' },
+        { value: 'gt',     label: '>' },
+        { value: 'lteq',   label: '<=' },
+        { value: 'gteq',   label: '>=' },
+      ]
+    end
+
 
     def dt_dropdown_data(name)
       "dt_filter_data_#{column_id(name)}".to_sym
@@ -53,6 +64,14 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
         return column.table[column.field].gteq(range_start) if range_end.blank?
         return column.table[column.field].lteq(range_end) if range_start.blank?
         column.table[column.field].between(AjaxDatatablesRails::Datatable::Column::DateFilter::DateRange.new(range_start, range_end))
+      end
+    end
+
+
+    def dynamic_numeric_condition(source:)
+      ->(column, value) do
+        cond = column_data(source).presence || 'gteq'
+        column.table[column.field].send(cond, value)
       end
     end
 

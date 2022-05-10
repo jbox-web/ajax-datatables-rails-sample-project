@@ -49,6 +49,8 @@ fr:
       enabled_s: Statut
       enabled_m: Statut
       rooms: Nb. emplacements
+      rooms2: Nb. emplacements
+      rooms_cond: condition
       name: Nom
       min: Min.
       max: Max.

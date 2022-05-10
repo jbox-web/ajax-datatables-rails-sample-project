@@ -14,7 +14,7 @@
     "@babel/runtime": "^7.17.9",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "@hotwired/turbo-rails": "^7.1.1",
-    "@jbox-web/datatables-factory": "https://github.com/jbox-web/datatables-factory.git#2b3abf1b5b9284457863a66225b93a1d53eb57a4",
+    "@jbox-web/datatables-factory": "https://github.com/jbox-web/datatables-factory.git#a8bea621e71083c8623e549752d1ac705df0b5e2",
     "@rails/ujs": "^7.0.2-4",
     "babel-loader": "^8.2.5",
     "babel-plugin-macros": "^3.1.0",

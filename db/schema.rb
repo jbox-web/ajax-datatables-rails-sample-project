@@ -12,11 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2021_01_04_032559) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "cities", force: :cascade do |t|
-    t.bigint "country_id"
+    t.integer "country_id"
     t.string "name"
     t.string "iata"
     t.string "timezone"

@@ -64,4 +64,9 @@ module ApplicationHelper
     [DATATABLE_LENGTH_MENU, DATATABLE_LENGTH_MENU]
   end
 
+
+  def datatables_factory_options
+    { dtf_options: { env: Rails.env, debug_log: true, debug_dump: true } }
+  end
+
 end
